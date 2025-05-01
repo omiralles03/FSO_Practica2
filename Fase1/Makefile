@@ -1,13 +1,28 @@
-all : winsuport.o tron1 
+LIBDIR := library
+BUILDDIR := build
+LOGDIR := logs
 
-winsuport.o : winsuport.c winsuport.h
-	gcc -Wall -c winsuport.c -o winsuport.o
+BIN := tron1
+CFLAGS := -Wall -I$(LIBDIR)
+LDFLAGS := -lcurses
 
-tron1 : tron1.c winsuport.o winsuport.h
-	gcc -Wall tron1.c winsuport.o -o tron1 -lcurses
+SRCS := $(wildcard $(LIBDIR)/*.c)
+OBJS := $(patsubst $(LIBDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
 
-run: tron1
-	./tron1 7 3 file.log 50 100
+.PHONY: all clean run
 
-clean: 
-	rm winsuport.o tron1
+all: $(BIN)
+
+$(BUILDDIR)/%.o: $(LIBDIR)/%.c
+	@mkdir -p $(BUILDDIR)
+	gcc $(CFLAGS) -c $< -o $@
+
+$(BIN): tron1.c $(OBJS)
+	gcc $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+run: all
+	@mkdir -p $(LOGDIR)
+	./$(BIN) 7 3 $(LOGDIR)/file.log 50 70
+
+clean:
+	rm -rf $(BUILDDIR) $(BIN)
