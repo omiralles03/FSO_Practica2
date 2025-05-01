@@ -1,0 +1,243 @@
+OPO 1  { pos: [  5, 80] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 39, 81] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 11, 80] | dir: LEFT  | fi: 0 }
+OPO 3  { pos: [ 16, 80] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 22, 80] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 27, 80] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 32, 81] | dir: UP    | fi: 0 }
+USER   { pos: [ 22, 28] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  5, 79] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 31, 81] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 16, 79] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 39, 80] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 29] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 11, 79] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 22, 79] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 27, 79] | dir: LEFT  | fi: 0 }
+OPO 3  { pos: [ 16, 78] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 30, 81] | dir: UP    | fi: 0 }
+OPO 1  { pos: [  5, 78] | dir: LEFT  | fi: 0 }
+OPO 2  { pos: [ 11, 78] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 39, 79] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 30] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 22, 78] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 28, 79] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 16, 77] | dir: LEFT  | fi: 0 }
+OPO 1  { pos: [  6, 78] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 29, 81] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 11, 77] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 23, 78] | dir: DOWN  | fi: 0 }
+USER   { pos: [ 22, 31] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 39, 78] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 29, 79] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  7, 78] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 16, 76] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 28, 81] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 24, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 11, 76] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 39, 77] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 32] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 30, 79] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 78] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 16, 75] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 28, 80] | dir: LEFT  | fi: 0 }
+OPO 2  { pos: [ 11, 75] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 25, 78] | dir: DOWN  | fi: 0 }
+USER   { pos: [ 22, 33] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 39, 76] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 31, 79] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 79] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 28, 79] | dir: LEFT  | fi: 0 }
+OPO 3  { pos: [ 17, 75] | dir: DOWN  | fi: 0 }
+OPO 4  { pos: [ 26, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 11, 74] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 34] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 39, 75] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 32, 79] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 80] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 18, 75] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 28, 78] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 35] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 26, 77] | dir: LEFT  | fi: 0 }
+OPO 2  { pos: [ 11, 73] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 38, 75] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 33, 79] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 81] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 19, 75] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 28, 77] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 22, 36] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 37, 75] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 25, 77] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 11, 72] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 34, 79] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 20, 75] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 82] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 28, 76] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 24, 77] | dir: UP    | fi: 0 }
+USER   { pos: [ 23, 36] | dir: DOWN  | fi: 0 }
+OPO 7  { pos: [ 36, 75] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 34, 80] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 12, 72] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 21, 75] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 83] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 28, 75] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 24, 36] | dir: DOWN  | fi: 0 }
+OPO 4  { pos: [ 23, 77] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 35, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 13, 72] | dir: DOWN  | fi: 0 }
+OPO 5  { pos: [ 34, 81] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 22, 75] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 84] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 25, 36] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 28, 74] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 22, 77] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 34, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 14, 72] | dir: DOWN  | fi: 0 }
+OPO 5  { pos: [ 34, 82] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 23, 75] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 85] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 25, 37] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 28, 73] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 34, 76] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 21, 77] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 15, 72] | dir: DOWN  | fi: 0 }
+OPO 5  { pos: [ 34, 83] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 24, 75] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  7, 85] | dir: UP    | fi: 0 }
+USER   { pos: [ 25, 38] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 21, 76] | dir: LEFT  | fi: 0 }
+OPO 6  { pos: [ 28, 72] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 34, 77] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 33, 83] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 16, 72] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 24, 74] | dir: LEFT  | fi: 0 }
+OPO 1  { pos: [  7, 86] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 25, 39] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 21, 75] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 34, 78] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 28, 71] | dir: LEFT  | fi: 0 }
+OPO 2  { pos: [ 17, 72] | dir: DOWN  | fi: 0 }
+OPO 5  { pos: [ 32, 83] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 24, 73] | dir: LEFT  | fi: 0 }
+USER   { pos: [ 25, 40] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  7, 87] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 20, 75] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 31, 83] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 72] | dir: DOWN  | fi: 0 }
+OPO 7  { pos: [ 34, 79] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 29, 71] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 25, 73] | dir: DOWN  | fi: 0 }
+USER   { pos: [ 25, 41] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  7, 88] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 19, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 73] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 30, 83] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 30, 71] | dir: DOWN  | fi: 0 }
+OPO 7  { pos: [ 34, 80] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 26, 73] | dir: DOWN  | fi: 0 }
+USER   { pos: [ 25, 42] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  8, 88] | dir: DOWN  | fi: 0 }
+OPO 4  { pos: [ 18, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 74] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 29, 83] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 34, 81] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 31, 71] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 27, 73] | dir: DOWN  | fi: 0 }
+USER   { pos: [ 25, 43] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  9, 88] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 18, 75] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 17, 75] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 28, 83] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 32, 71] | dir: DOWN  | fi: 0 }
+OPO 7  { pos: [ 34, 82] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 28, 73] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  9, 89] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 24, 43] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 16, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 76] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 27, 83] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 33, 82] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 29, 73] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 33, 71] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  8, 89] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 77] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 23, 43] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 15, 75] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 32, 82] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 27, 84] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 30, 73] | dir: DOWN  | fi: 0 }
+OPO 6  { pos: [ 33, 72] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 22, 43] | dir: UP    | fi: 0 }
+OPO 1  { pos: [  7, 89] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 14, 75] | dir: UP    | fi: 0 }
+OPO 2  { pos: [ 18, 78] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 27, 85] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 30, 74] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 31, 82] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 33, 73] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 13, 75] | dir: UP    | fi: 0 }
+USER   { pos: [ 22, 44] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 18, 79] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  6, 89] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 27, 86] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 30, 82] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 33, 74] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 29, 74] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 12, 75] | dir: UP    | fi: 0 }
+USER   { pos: [ 22, 45] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 18, 80] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  5, 89] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 27, 87] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 28, 74] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 29, 82] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 33, 75] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 12, 76] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 22, 46] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 18, 81] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  4, 89] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 28, 75] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 27, 88] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 28, 82] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 33, 76] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 12, 77] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 18, 82] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 22, 47] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 28, 76] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  3, 89] | dir: UP    | fi: 0 }
+OPO 5  { pos: [ 27, 89] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 27, 82] | dir: UP    | fi: 0 }
+OPO 6  { pos: [ 33, 77] | dir: RIGHT | fi: 0 }
+OPO 4  { pos: [ 12, 78] | dir: RIGHT | fi: 0 }
+OPO 2  { pos: [ 18, 83] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 22, 48] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  2, 89] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 28, 77] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 27, 90] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 33, 78] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 26, 82] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 13, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 18, 84] | dir: RIGHT | fi: 0 }
+USER   { pos: [ 22, 49] | dir: RIGHT | fi: -1 }
+OPO 1  { pos: [  1, 89] | dir: UP    | fi: 0 }
+OPO 3  { pos: [ 28, 78] | dir: RIGHT | fi: 0 }
+OPO 5  { pos: [ 27, 91] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 33, 79] | dir: RIGHT | fi: 0 }
+OPO 7  { pos: [ 26, 81] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 14, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 18, 85] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 29, 78] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  1, 88] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 27, 92] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 32, 79] | dir: UP    | fi: 0 }
+OPO 7  { pos: [ 26, 80] | dir: LEFT  | fi: 0 }
+OPO 4  { pos: [ 15, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 18, 86] | dir: RIGHT | fi: 0 }
+OPO 3  { pos: [ 30, 78] | dir: DOWN  | fi: 0 }
+OPO 1  { pos: [  1, 87] | dir: LEFT  | fi: 0 }
+OPO 7  { pos: [ 26, 79] | dir: LEFT  | fi: 0 }
+OPO 5  { pos: [ 27, 93] | dir: RIGHT | fi: 0 }
+OPO 6  { pos: [ 31, 79] | dir: UP    | fi: 0 }
+OPO 4  { pos: [ 16, 78] | dir: DOWN  | fi: 0 }
+OPO 2  { pos: [ 18, 87] | dir: RIGHT | fi: 0 }
+OPO 1  { pos: [  2, 87] | dir: DOWN  | fi: 0 }
+OPO 3  { pos: [ 31, 78] | dir: DOWN  | fi: 0 }
