@@ -7,8 +7,5 @@ tron*
 # Keep c files
 !*.c
 
-# Log files
-logs/
-
 *.o
 
