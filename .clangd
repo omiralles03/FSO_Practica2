@@ -1,0 +1,3 @@
+# LSP gcc flags detection
+CompileFlags:
+  Add: [-Ilibrary, -I.]
