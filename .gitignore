@@ -1,5 +1,5 @@
 # Ignore build files
-/build/
+build/
 
 # Ignore executables
 tron*
@@ -8,7 +8,7 @@ tron*
 !*.c
 
 # Log files
-/logs/
+logs/
 
 *.o
 
