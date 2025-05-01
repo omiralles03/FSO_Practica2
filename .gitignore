@@ -1,2 +1,15 @@
 # Ignore build files
 *.o
+
+# Ignore executables
+tron*
+
+# Keep c files
+!*.c
+
+# Log files
+*.log
+
+# Any backups
+*~
+*.swp
