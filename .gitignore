@@ -1,5 +1,5 @@
 # Ignore build files
-*.o
+/build/
 
 # Ignore executables
 tron*
@@ -8,8 +8,7 @@ tron*
 !*.c
 
 # Log files
-*.log
+/logs/
 
-# Any backups
-*~
-*.swp
+*.o
+
