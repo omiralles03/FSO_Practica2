@@ -52,10 +52,9 @@ extern shared_data *sd;
 extern int sem_draw, sem_log, sem_sd;
 
 void inicialitza_joc(void);
-void show_score(void);
 void escriu_log(int id, int f, int c, int d, int fi);
 void esborrar_posicions(pos p_pos[], int n_pos);
-void mou_usuari(void);
+void *mou_usuari(void *);
 void mou_oponent(int index);
 
 #endif

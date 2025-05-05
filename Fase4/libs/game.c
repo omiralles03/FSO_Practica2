@@ -50,22 +50,6 @@ void esborrar_posicions(pos p_pos[], int n_pos) {
     }
 }
 
-/* funcio per mostrar informacio de joc a la finestra inferior */
-void show_score() {
-
-    char strin[70];
-    if (n_col < 100)
-        sprintf(strin, "Num. oponents: %d", sd->num_opo);
-    else
-        sprintf(
-            strin,
-            "Tecles: \'%c\', \'%c\', \'%c\', \'%c\', RETURN-> sortir \t Num. "
-            "oponents: %d\n",
-            TEC_AMUNT, TEC_AVALL, TEC_DRETA, TEC_ESQUER, sd->num_opo);
-
-    win_escristr(strin);
-}
-
 /* funcio per inicialitar les variables i visualitzar l'estat inicial del joc */
 void inicialitza_joc(void) {
 
@@ -79,8 +63,6 @@ void inicialitza_joc(void) {
     n_usu++;
 
     sd->ocupada[usu.f][usu.c] = 1; /* Guardar posicio ocupada */
-
-    show_score();
 }
 
 /* funcio per escriure al log */
@@ -98,7 +80,7 @@ void escriu_log(int id, int f, int c, int d, int fi) {
     write(log_file, msg, strlen(msg));
 }
 
-void mou_usuari(void) {
+void *mou_usuari(void *arg) {
     char cars;
     tron seg;
     int tecla;
@@ -176,6 +158,7 @@ void mou_usuari(void) {
 
         win_retard(rand() % (max_ret - min_ret + 1) + min_ret);
     } while (!fi1 && !local_fi2);
+    return NULL;
 }
 
 /* funcio per moure un oponent una posicio; retorna 1 si l'oponent xoca */
@@ -247,7 +230,6 @@ void mou_oponent(int index) {
                 fi2 = 1; /* xoc: ha perdut l'oponent! */
                 waitS(sem_sd);
                 sd->num_opo--;
-                show_score();
                 signalS(sem_sd);
             } else {
                 if (nd == 1)              /* si nomes pot en una direccio */
@@ -287,7 +269,6 @@ void mou_oponent(int index) {
             waitS(sem_sd);
             if (sd->num_opo == 0) {
                 sd->fi2 = 1;
-                show_score();
             }
             signalS(sem_sd);
         }
