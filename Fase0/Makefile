@@ -1,28 +1,31 @@
-LIBDIR := library
+# Directories
+LIBDIR   := libs
+SRCDIR   := src
 BUILDDIR := build
-LOGDIR := logs
 
-BIN := tron0
-CFLAGS := -Wall -I$(LIBDIR)
+# Compiler Flags
+CFLAGS  := -Wall -I$(LIBDIR)
 LDFLAGS := -lcurses
 
-SRCS := $(wildcard $(LIBDIR)/*.c)
-OBJS := $(patsubst $(LIBDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
+# Object files from libraries
+SRCS_LIB := $(wildcard $(LIBDIR)/*.c)
+OBJS     := $(patsubst $(LIBDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS_LIB))
 
 .PHONY: all clean run
 
-all: $(BIN)
+all: tron0
 
-$(BUILDDIR)/%.o: $(LIBDIR)/%.c
+# Build .c files
+$(BUILDDIR)/%.o: $(LIBDIR)/%.c $(LIBDIR)/%.h
 	@mkdir -p $(BUILDDIR)
 	gcc $(CFLAGS) -c $< -o $@
 
-$(BIN): tron0.c $(OBJS)
+tron0: $(SRCDIR)/tron0.c $(OBJS)
 	gcc $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 run: all
-	@mkdir -p $(LOGDIR)
-	./$(BIN) 3 50
+	./tron0 3 50
 
 clean:
-	rm -rf $(BUILDDIR) $(BIN)
+	rm -rf $(BUILDDIR) tron0
+
