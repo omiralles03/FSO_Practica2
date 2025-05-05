@@ -10,10 +10,8 @@ LDFLAGS   := -lcurses
 TRON_LDFLAGS := $(LDFLAGS) -lpthread
 
 # Object files from libraries
-OBJS     := $(BUILDDIR)/game.o \
-            $(BUILDDIR)/memoria.o \
-            $(BUILDDIR)/semafor.o \
-            $(BUILDDIR)/winsuport2.o
+SRCS_LIB := $(wildcard $(LIBDIR)/*.c)
+OBJS     := $(patsubst $(LIBDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS_LIB))
 
 .PHONY: all clean run
 
