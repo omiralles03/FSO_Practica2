@@ -1,4 +1,4 @@
-#include "winsuport.h" /* incloure definicions de funcions propies */
+#include "../libs/winsuport.h" /* incloure definicions de funcions propies */
 #include <fcntl.h>
 #include <stdio.h> /* incloure definicions de funcions estandard */
 #include <stdlib.h>

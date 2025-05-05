@@ -1,4 +1,4 @@
-#include "game.h"
+#include "../libs/game.h"
 #include <fcntl.h>
 #include <stdio.h> /* incloure definicions de funcions estandard */
 #include <stdlib.h>
