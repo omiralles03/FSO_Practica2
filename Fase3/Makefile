@@ -1,12 +1,15 @@
+# Directories
 LIBDIR   := libs
 SRCDIR   := src
 BUILDDIR := build
 LOGDIR   := logs
 
+# Compiler Flags
 CFLAGS    := -Wall -I$(LIBDIR)
 LDFLAGS   := -lcurses
 TRON_LDFLAGS := $(LDFLAGS) -lpthread
 
+# Object files from libraries
 OBJS     := $(BUILDDIR)/game.o \
             $(BUILDDIR)/memoria.o \
             $(BUILDDIR)/semafor.o \
@@ -16,6 +19,7 @@ OBJS     := $(BUILDDIR)/game.o \
 
 all: tron3 oponent3
 
+# Build .c files
 $(BUILDDIR)/%.o: $(LIBDIR)/%.c $(LIBDIR)/%.h
 	@mkdir -p $(BUILDDIR)
 	gcc $(CFLAGS) -c $< -o $@
