@@ -65,6 +65,10 @@ void esborrar_posicions(pos p_pos[], int n_pos) {
         win_escricar(p_pos[i].f, p_pos[i].c, ' ',
                      NO_INV); /* esborra una pos. */
         signalS(sem_draw);
+
+        waitS(sem_sd);
+        sd->ocupada[p_pos[i].f][p_pos[i].c] = 0; /* marcar posicio lliure */
+        signalS(sem_sd);
         win_retard(10); /* un petit retard per simular el joc real */
     }
 }
