@@ -61,6 +61,11 @@ void esborrar_posicions(pos p_pos[], int n_pos) {
         win_escricar(p_pos[i].f, p_pos[i].c, ' ',
                      NO_INV); /* esborra una pos. */
         signalS(sem_draw);
+
+        waitS(sem_sd);
+        sd->ocupada[p_pos[i].f][p_pos[i].c] = 0; /* marcar posicio lliure */
+        signalS(sem_sd);
+
         win_retard(10); /* un petit retard per simular el joc real */
     }
 }
@@ -165,9 +170,6 @@ void mou_oponent(int index) {
                 fi2 = 1; /* xoc: ha perdut l'oponent! */
                 waitS(sem_sd);
                 sd->num_opo--;
-                if (sd->num_opo == 0) {
-                    sd->fi2 = 1;
-                }
                 show_score();
                 signalS(sem_sd);
             } else {
@@ -202,8 +204,16 @@ void mou_oponent(int index) {
             escriu_log(index + 1, opo[index].f, opo[index].c, opo[index].d,
                        fi2);
             signalS(sem_log);
-        } else
+        } else {
             esborrar_posicions(p_opo, n_opo);
+
+            waitS(sem_sd);
+            if (sd->num_opo == 0) {
+                sd->fi2 = 1;
+                show_score();
+            }
+            signalS(sem_sd);
+        }
 
         win_retard(rand() % (max_ret - min_ret + 1) + min_ret);
 

@@ -65,6 +65,11 @@ void esborrar_posicions(pos p_pos[], int n_pos) {
         win_escricar(p_pos[i].f, p_pos[i].c, ' ',
                      NO_INV); /* esborra una pos. */
         signalS(sem_draw);
+
+        waitS(sem_sd);
+        sd->ocupada[p_pos[i].f][p_pos[i].c] = 0; /* marcar posicio lliure */
+        signalS(sem_sd);
+
         win_retard(10); /* un petit retard per simular el joc real */
     }
 }
@@ -100,19 +105,19 @@ void inicialitza_joc(void) {
 
     sd->ocupada[usu.f][usu.c] = 1; /* Guardar posicio ocupada */
 
-    for (int i = 0; i < num_opo; i++) {
-        opo[i].f = (n_fil - 1) * (i + 1) / (num_opo + 1);
-        opo[i].c =
-            (n_col * 3) / 4; /* fixa posicio i direccio inicial oponent */
-        opo[i].d = 1;
-        win_escricar(opo[i].f, opo[i].c, i + '1',
-                     INVERS);      /* escriu la primer posicio oponent */
-        p_opo[n_opo].f = opo[i].f; /* memoritza posicio inicial */
-        p_opo[n_opo].c = opo[i].c;
-        n_opo++;
-
-        sd->ocupada[opo[i].f][opo[i].c] = 1; /* Guardar posicio ocupada */
-    }
+    // for (int i = 0; i < num_opo; i++) {
+    //     opo[i].f = (n_fil - 1) * (i + 1) / (num_opo + 1);
+    //     opo[i].c =
+    //         (n_col * 3) / 4; /* fixa posicio i direccio inicial oponent */
+    //     opo[i].d = 1;
+    //     win_escricar(opo[i].f, opo[i].c, i + '1',
+    //                  INVERS);      /* escriu la primer posicio oponent */
+    //     p_opo[n_opo].f = opo[i].f; /* memoritza posicio inicial */
+    //     p_opo[n_opo].c = opo[i].c;
+    //     n_opo++;
+    //
+    //     sd->ocupada[opo[i].f][opo[i].c] = 1; /* Guardar posicio ocupada */
+    // }
 
     show_score();
     // sprintf(strin, "Tecles: \'%c\', \'%c\', \'%c\', \'%c\', RETURN->
@@ -208,10 +213,10 @@ void mou_usuari(void) {
             escriu_log(0, usu.f, usu.c, usu.d, fi1);
             signalS(sem_log);
         } else {
+            esborrar_posicions(p_usu, n_usu);
             waitS(sem_sd);
             sd->fi1 = 1;
             signalS(sem_sd);
-            esborrar_posicions(p_usu, n_usu);
             fi1 = 1;
         }
 

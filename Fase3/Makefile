@@ -25,7 +25,7 @@ tron3: tron3.c $(OBJS)
 oponent3: oponent3.c $(OBJS)
 	gcc $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-run: tron3
+run: all
 	@mkdir -p $(LOGDIR)
 	./tron3 7 3 $(LOGDIR)/file.log 50 70
 
