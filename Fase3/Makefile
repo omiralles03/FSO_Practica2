@@ -1,28 +1,30 @@
-LIBDIR    := library
-BUILDDIR  := build
-LOGDIR    := logs
-
-BINS      := tron3 oponent3
+LIBDIR   := library
+SRCDIR   := src
+BUILDDIR := build
+LOGDIR   := logs
 
 CFLAGS    := -Wall -I$(LIBDIR)
 LDFLAGS   := -lcurses
 TRON_LDFLAGS := $(LDFLAGS) -lpthread
 
-SRCS      := $(wildcard $(LIBDIR)/*.c)
-OBJS      := $(patsubst $(LIBDIR)/%.c,$(BUILDDIR)/%.o,$(SRCS))
+# ara game.o, memoria.o, semafor.o, winsuport2.o
+OBJS     := $(BUILDDIR)/game.o \
+            $(BUILDDIR)/memoria.o \
+            $(BUILDDIR)/semafor.o \
+            $(BUILDDIR)/winsuport2.o
 
 .PHONY: all clean run
 
-all: $(BINS)
+all: tron3 oponent3
 
-$(BUILDDIR)/%.o: $(LIBDIR)/%.c
+$(BUILDDIR)/%.o: $(LIBDIR)/%.c $(LIBDIR)/%.h
 	@mkdir -p $(BUILDDIR)
 	gcc $(CFLAGS) -c $< -o $@
 
-tron3: tron3.c $(OBJS)
+tron3: $(SRCDIR)/tron3.c $(OBJS)
 	gcc $(CFLAGS) $^ -o $@ $(TRON_LDFLAGS)
 
-oponent3: oponent3.c $(OBJS)
+oponent3: $(SRCDIR)/oponent3.c $(OBJS)
 	gcc $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 run: all
@@ -30,4 +32,5 @@ run: all
 	./tron3 7 3 $(LOGDIR)/file.log 50 70
 
 clean:
-	rm -rf $(BUILDDIR) $(BINS) $(LOGDIR)
+	rm -rf $(BUILDDIR) tron3 oponent3 $(LOGDIR)
+
