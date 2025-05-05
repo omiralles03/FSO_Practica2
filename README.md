@@ -1,36 +1,49 @@
-# Pràctica 2: FSO
+# Tron ASCII Racer: Multiprocess “Tron” in C
 
-## Objectiu
-- Aprendre conceptes bàsics relacionats amb la programació amb múltiples processos (multiprocés).
-
----
-
-# FASE 0: Programa seqüencial `tron0.c`
-Versió inicial amb un sol tron oponent.
+> A lightweight terminal-based “Tron” clone implemented in C to explore multi-process programming, shared memory, semaphores, and inter-process synchronization—all within a Unix `curses` interface.
 
 ---
 
-# FASE 1: Creació de processos `tron1.c`
-Modificar les funcions que controlen el moviment dels trons (usuari i oponent) per a què puguin actuar com a processos amb execució independents
+## 🚀 Project Overview
+
+This project walks through four progressive phases of implementing a multi-player “Tron” game in C:
+
+1. **Phase 0**: Single-process, sequential game engine (`tron0.c`)  
+2. **Phase 1**: Forked processes for user and opponent(s) with independent execution (`tron1.c`)  
+3. **Phase 2**: Shared memory & semaphores for safe concurrent access to game state and the log file (`tron2.c`)  
+4. **Phase 3**: Decoupled executables—separate binaries for controller (`tron3`) and opponent agents (`oponent3`) communicating via `execlp` & a shared curses buffer  
+
+By the end, you have a robust, terminal-driven game engine that seamlessly coordinates multiple processes drawing on a shared screen buffer, synchronizing via POSIX semaphores, and logging gameplay events in real-time.
 
 ---
 
-# FASE 2: Memòria compartida i sincronització de processos `tron2.c`
-Afegir a la fase anterior la sincronització en l’accés concurrent als recursos globals.
+## 📁 Repository Structure
 
 ---
 
-# FASE 3: Creació de codis independents dels processos `tron3.c` / `oponent3.c`
-Convertir el codi dels processos que controlen els trons oponents en programes independents que s’hauran de carregar a l’espai de codi amb crides execlp
+## 🛠️ Building & Running
+
+1. **Clone**  
+   ```bash
+   git clone https://github.com/omiralles03/FSO_Practica2.git
+   cd FSO_Practica2
+    ```
+
+2. **Building**
+   ```bash
+   make         # Compiles everything.
+   ```
+
+   ```bash
+   make run     # Compiles everything and executes with test parameters.
+   ```
+
+   ```bash
+   make clean   # Removes all compiled files.
+   ```
 
 ---
 
-# Lliurament
-El lliurament de la pràctica 2 (fitxers font) cal fer-lo a través de l’aplicació MOODLE.
-La data límit de lliurament en primera convocatòria la podeu consultar en l’enllaç ‘Distribució de classes’ a la pàgina web de l’assignatura.
-
----
-
-# Qualificacions
+## 📝 Usage Examples
 
 ---
