@@ -1,6 +1,9 @@
 # Ignore build files
 build/
 
+# Ignore logs
+logs/
+
 # Ignore executables
 tron*
 
