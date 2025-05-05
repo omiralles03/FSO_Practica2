@@ -136,120 +136,6 @@ void escriu_log(int id, int f, int c, int d, int fi) {
     write(log_file, msg, strlen(msg));
 }
 
-/* funcio per moure un oponent una posicio; retorna 1 si l'oponent xoca */
-/* contra alguna cosa, 0 altrament					*/
-void mou_oponent(int index) {
-    char cars;
-    tron seg;
-    int k, vk, nd, vd[3];
-    int canvi = 0;
-    int local_fi1;
-
-    do {
-        waitS(sem_sd);
-        local_fi1 = sd->fi1;
-        signalS(sem_sd);
-        if (local_fi1 != 0)
-            break; /* si l'usuari ha acabat el joc, sortir */
-
-        canvi = 0;
-        seg.f = opo[index].f + df[opo[index].d]; /* calcular seguent posicio */
-        seg.c = opo[index].c + dc[opo[index].d];
-
-        waitS(sem_sd);
-        if (sd->ocupada[seg.f][seg.c]) {
-            cars = 'X';
-        } else {
-            cars = win_quincar(seg.f,
-                               seg.c); /* calcula caracter seguent posicio */
-        }
-        signalS(sem_sd);
-
-        if (cars != ' ') /* si seguent posicio ocupada */
-            canvi = 1;   /* anotar que s'ha de produir un canvi de direccio */
-        else if (varia > 0) /* si hi ha variabilitat */
-        {
-            k = rand() % 10; /* prova un numero aleatori del 0 al 9 */
-            if (k < varia)
-                canvi = 1; /* possible canvi de direccio */
-        }
-
-        if (canvi) /* si s'ha de canviar de direccio */
-        {
-            nd = 0;
-            for (k = -1; k <= 1; k++) /* provar direccio actual i dir. veines */
-            {
-                vk = (opo[index].d + k) % 4; /* nova direccio */
-                if (vk < 0)
-                    vk += 4; /* corregeix negatius */
-                seg.f =
-                    opo[index].f + df[vk]; /* calcular posicio en la nova dir.*/
-                seg.c = opo[index].c + dc[vk];
-
-                waitS(sem_sd);
-                if (sd->ocupada[seg.f][seg.c]) {
-                    cars = 'X';
-                } else {
-                    cars = win_quincar(
-                        seg.f, seg.c); /* calcula caracter seguent posicio */
-                }
-                signalS(sem_sd);
-
-                if (cars == ' ') {
-                    vd[nd] = vk; /* memoritza com a direccio possible */
-                    nd++;        /* anota una direccio possible mes */
-                }
-            }
-            if (nd == 0) /* si no pot continuar, */
-            {
-                fi2 = 1; /* xoc: ha perdut l'oponent! */
-                waitS(sem_sd);
-                sd->num_opo--;
-                if (sd->num_opo == 0) {
-                    sd->fi2 = 1;
-                }
-                show_score();
-                signalS(sem_sd);
-            } else {
-                if (nd == 1)              /* si nomes pot en una direccio */
-                    opo[index].d = vd[0]; /* li assigna aquesta */
-                else                      /* altrament */
-                    opo[index].d =
-                        vd[rand() % nd]; /* segueix una dir. aleatoria */
-            }
-        }
-        if (fi2 == 0) /* si no ha col.lisionat amb res */
-        {
-            opo[index].f =
-                opo[index].f + df[opo[index].d]; /* actualitza posicio */
-            opo[index].c = opo[index].c + dc[opo[index].d];
-
-            // Actualitzar posicio ocupada
-            waitS(sem_sd);
-            sd->ocupada[opo[index].f][opo[index].c] = 1;
-            signalS(sem_sd);
-
-            waitS(sem_draw);
-            win_escricar(opo[index].f, opo[index].c, '1' + index,
-                         INVERS); /* dibuixa bloc oponent */
-            signalS(sem_draw);
-
-            p_opo[n_opo].f = opo[index].f; /* memoritza posicio actual */
-            p_opo[n_opo].c = opo[index].c;
-            n_opo++;
-
-            waitS(sem_log);
-            escriu_log(index + 1, opo[index].f, opo[index].c, opo[index].d,
-                       fi2);
-            signalS(sem_log);
-        } else
-            esborrar_posicions(p_opo, n_opo);
-
-        win_retard(rand() % (max_ret - min_ret + 1) + min_ret);
-
-    } while (!fi2); /* repetir fins que no xoca amb res */
-}
-
 /* funcio per moure l'usuari una posicio, en funcio de la direccio de   */
 /* moviment actual; retorna -1 si s'ha premut RETURN, 1 si ha xocat     */
 /* contra alguna cosa, i 0 altrament */
@@ -335,7 +221,6 @@ void mou_usuari(void) {
 
 /* programa principal				    */
 int main(int n_args, const char *ll_args[]) {
-    int retwin; /* variables locals */
 
     srand(getpid()); /* inicialitza numeros aleatoris */
 
@@ -373,26 +258,12 @@ int main(int n_args, const char *ll_args[]) {
 
     n_fil = 0;
     n_col = 0; /* demanarem dimensions de taulell maximes */
-    retwin = win_ini(&n_fil, &n_col, '+', INVERS); /* intenta crear taulell */
+    size_t retwin =
+        win_ini(&n_fil, &n_col, '+', INVERS); /* intenta crear taulell */
 
     if (retwin < 0) /* si no pot crear l'entorn de joc amb les curses */
     {
         fprintf(stderr, "Error en la creacio del taulell de joc:\t");
-        switch (retwin) {
-        case -1:
-            fprintf(stderr, "camp de joc ja creat!\n");
-            break;
-        case -2:
-            fprintf(stderr, "no s'ha pogut inicialitzar l'entorn de curses!\n");
-            break;
-        case -3:
-            fprintf(stderr, "les mides del camp demanades son massa grans!\n");
-            break;
-        case -4:
-            fprintf(stderr, "no s'ha pogut crear la finestra!\n");
-            break;
-        }
-        exit(2);
     }
 
     p_usu =
@@ -413,8 +284,8 @@ int main(int n_args, const char *ll_args[]) {
     /* Fins aqui tot ha anat be! */
 
     int id_retwin = ini_mem(retwin);
-    void *p_mem = map_mem(id_retwin);
-    win_set(p_mem, n_fil, n_col);
+    char *p_retwin = map_mem(id_retwin);
+    win_set(p_retwin, n_fil, n_col);
 
     int id_mem = ini_mem(sizeof(shared_data));
     sd = map_mem(id_mem);
@@ -429,14 +300,46 @@ int main(int n_args, const char *ll_args[]) {
     sem_draw = ini_sem(1);
     sem_log = ini_sem(1);
     sem_sd = ini_sem(1);
+
+    pid_t pid_update = fork();
+    if (pid_update == 0) {
+        while (!sd->fi1 && !sd->fi2) {
+            waitS(sem_draw);
+            win_update();
+            signalS(sem_draw);
+            win_retard(10);
+        }
+        exit(0);
+    }
+
     inicialitza_joc();
+
+    char s_idretwin[16], s_idmem[16], s_nfil[16], s_ncol[16], s_sdraw[16],
+        s_slog[16], s_ssd[16], s_varia[16], s_maxret[16], s_minret[16],
+        s_logfile[16], s_index[16];
+
+    snprintf(s_idretwin, sizeof(s_idretwin), "%d", id_retwin);
+    snprintf(s_idmem, sizeof(s_idmem), "%d", id_mem);
+    snprintf(s_nfil, sizeof(s_nfil), "%d", n_fil);
+    snprintf(s_ncol, sizeof(s_ncol), "%d", n_col);
+    snprintf(s_sdraw, sizeof(s_sdraw), "%d", sem_draw);
+    snprintf(s_slog, sizeof(s_slog), "%d", sem_log);
+    snprintf(s_ssd, sizeof(s_ssd), "%d", sem_sd);
+    snprintf(s_varia, sizeof(s_varia), "%d", varia);
+    snprintf(s_maxret, sizeof(s_maxret), "%d", max_ret);
+    snprintf(s_minret, sizeof(s_minret), "%d", min_ret);
+    snprintf(s_logfile, sizeof(s_logfile), "%d", log_file);
 
     pid_t pid_opo[num_opo];
     for (int i = 0; i < num_opo; i++) {
         pid_opo[i] = fork();
         if (pid_opo[i] == 0) {
-            srand(getpid()); /* inicialitza numeros aleatoris */
-            mou_oponent(i);
+            snprintf(s_index, sizeof(s_index), "%d", i);
+            // srand(getpid()); /* inicialitza numeros aleatoris */
+            // mou_oponent(i);
+            execlp("./oponent3", "oponent3", s_idretwin, s_idmem, s_nfil,
+                   s_ncol, s_sdraw, s_slog, s_ssd, s_varia, s_maxret, s_minret,
+                   s_logfile, s_index, NULL);
             exit(0);
         }
     }
