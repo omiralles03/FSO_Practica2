@@ -1,4 +1,4 @@
-LIBDIR   := library
+LIBDIR   := libs
 SRCDIR   := src
 BUILDDIR := build
 LOGDIR   := logs
@@ -7,7 +7,6 @@ CFLAGS    := -Wall -I$(LIBDIR)
 LDFLAGS   := -lcurses
 TRON_LDFLAGS := $(LDFLAGS) -lpthread
 
-# ara game.o, memoria.o, semafor.o, winsuport2.o
 OBJS     := $(BUILDDIR)/game.o \
             $(BUILDDIR)/memoria.o \
             $(BUILDDIR)/semafor.o \
