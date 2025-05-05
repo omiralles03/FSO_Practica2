@@ -54,8 +54,8 @@ typedef struct {
 shared_data *sd;
 int sem_draw, sem_log, sem_sd;
 
-/* funcio per esborrar totes les posicions anteriors, sigui de l'usuari o */
-/* de l'oponent */
+/* funcio per esborrar totes les posicions anteriors, sigui de l'usuari o
+ * l'oponent*/
 void esborrar_posicions(pos p_pos[], int n_pos) {
     int i;
 
@@ -92,7 +92,6 @@ void show_score() {
 
 /* funcio per inicialitar les variables i visualitzar l'estat inicial del joc */
 void inicialitza_joc(void) {
-    // char strin[45];
 
     usu.f = (n_fil - 1) / 2;
     usu.c = (n_col) / 4; /* fixa posicio i direccio inicial usuari */
@@ -105,30 +104,12 @@ void inicialitza_joc(void) {
 
     sd->ocupada[usu.f][usu.c] = 1; /* Guardar posicio ocupada */
 
-    // for (int i = 0; i < num_opo; i++) {
-    //     opo[i].f = (n_fil - 1) * (i + 1) / (num_opo + 1);
-    //     opo[i].c =
-    //         (n_col * 3) / 4; /* fixa posicio i direccio inicial oponent */
-    //     opo[i].d = 1;
-    //     win_escricar(opo[i].f, opo[i].c, i + '1',
-    //                  INVERS);      /* escriu la primer posicio oponent */
-    //     p_opo[n_opo].f = opo[i].f; /* memoritza posicio inicial */
-    //     p_opo[n_opo].c = opo[i].c;
-    //     n_opo++;
-    //
-    //     sd->ocupada[opo[i].f][opo[i].c] = 1; /* Guardar posicio ocupada */
-    // }
-
     show_score();
-    // sprintf(strin, "Tecles: \'%c\', \'%c\', \'%c\', \'%c\', RETURN->
-    // sortir\n",
-    //         TEC_AMUNT, TEC_AVALL, TEC_DRETA, TEC_ESQUER);
-    // win_escristr(strin);
 }
 
 /* funcio per escriure al log */
 void escriu_log(int id, int f, int c, int d, int fi) {
-    char msg[60]; // Increased buffer size for safety
+    char msg[60];
     const char *dir[4] = {"UP", "LEFT", "DOWN", "RIGHT"};
 
     if (id == 0)
@@ -141,9 +122,6 @@ void escriu_log(int id, int f, int c, int d, int fi) {
     write(log_file, msg, strlen(msg));
 }
 
-/* funcio per moure l'usuari una posicio, en funcio de la direccio de   */
-/* moviment actual; retorna -1 si s'ha premut RETURN, 1 si ha xocat     */
-/* contra alguna cosa, i 0 altrament */
 void mou_usuari(void) {
     char cars;
     tron seg;
