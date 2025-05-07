@@ -4,11 +4,6 @@ build/
 # Ignore logs
 logs/
 
-# Ignore executables
-tron*
-
-# Keep c files
-!*.c
-
-*.o
+# Ignore all executables
+*[!./]
 
