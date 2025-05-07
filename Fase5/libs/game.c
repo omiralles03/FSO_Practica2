@@ -30,6 +30,9 @@ int max_ret, min_ret;
 shared_data *sd;
 int sem_draw, sem_log, sem_sd;
 
+int bustia[MAX_OPO];
+char DEBUG;
+
 /* funcio per esborrar totes les posicions anteriors, sigui de l'usuari o
  * l'oponent*/
 void esborrar_posicions(pos p_pos[], int n_pos) {
@@ -138,9 +141,13 @@ void *mou_usuari(void *arg) {
             sd->fi1 = 1;
             signalS(sem_sd);
             fi1 = 1;
-        } else {
-            // TODO: ENVIAR MISSATGES
+        } else if (cars >= '1' && cars <= '0' + num_opo) {
             int opo_id = cars - '1';
+            msg_data msg;
+            msg.f = seg.f;
+            msg.c = seg.c;
+            fprintf(stdout, "msg.f %d, msg.c %d\n", msg.f, msg.c);
+            sendM(bustia[opo_id], &msg, sizeof(msg));
         }
 
         win_retard(rand() % (max_ret - min_ret + 1) + min_ret);
@@ -229,10 +236,14 @@ void mou_oponent(int index) {
             n_opo++;
 
             /* guardar la posicio a la taula de trails */
-            // TODO: REVISAR EL GUARDAT DELS TRAILS
             signalS(sem_sd);
             int l = sd->trails[index].len;
-            sd->trails[index].trail[l] = p_opo[n_opo];
+            sd->trails[index].trail[l].f = opo[index].f;
+            sd->trails[index].trail[l].c = opo[index].c;
+            sd->trails[index].len++;
+            // printf("len: %d, trail[%d]: {%d, %d}\n", l, index,
+            //        sd->trails[index].trail[l].f,
+            //        sd->trails[index].trail[l].c);
             waitS(sem_sd);
 
             waitS(sem_log);
