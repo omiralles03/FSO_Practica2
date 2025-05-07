@@ -15,9 +15,10 @@
 /*  Autor : Carles Aliagas					      */
 /*  modif : M.Angels Moncusi			      		      */
 /**********************************************************************/
+#include "missatge.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "missatge.h"
 
 /**********************************************************************/
 /*                                                                    */
@@ -29,20 +30,19 @@
 /*   Sortides : Identificador de la cua de missatges.                 */
 /*                                                                    */
 /**********************************************************************/
-int ini_mis()
-{
-int id_mis;
+int ini_mis() {
+    int id_mis;
 
- id_mis = msgget(IPC_PRIVATE,0600);	/* reserva d'un conjunt de missatge
-				del sistema, de forma privada, per al proces
-				actual i als seus fills. Nomes reservem un.
-				Nomes el propietari podra utilitzar-lo */
-if (id_mis == 1)
-{ fprintf (stderr,"error al inicialitzar la bustia\n");
-  exit(2);
-}
+    id_mis = msgget(IPC_PRIVATE, 0600); /* reserva d'un conjunt de missatge
+                                del sistema, de forma privada, per al proces
+                                actual i als seus fills. Nomes reservem un.
+                                Nomes el propietari podra utilitzar-lo */
+    if (id_mis == 1) {
+        fprintf(stderr, "error al inicialitzar la bustia\n");
+        exit(2);
+    }
 
- return(id_mis);
+    return (id_mis);
 }
 
 /**********************************************************************/
@@ -55,16 +55,15 @@ if (id_mis == 1)
 /*   Sortides : --                                                    */
 /*                                                                    */
 /**********************************************************************/
-void elim_mis(int id_mis)
-{
-struct msqid_ds a[1];
-int r;
+void elim_mis(int id_mis) {
+    struct msqid_ds a[1];
+    int r;
 
- r = msgctl(id_mis,IPC_RMID,a); 	/* esborrem la cua */
-if (r != 0)
-{ fprintf (stderr,"error al eliminar la bustia\n");
-  exit(2);
-}
+    r = msgctl(id_mis, IPC_RMID, a); /* esborrem la cua */
+    if (r != 0) {
+        fprintf(stderr, "error al eliminar la bustia\n");
+        exit(2);
+    }
 }
 
 /**********************************************************************/
@@ -80,26 +79,42 @@ if (r != 0)
 /*   Sortides : --                                                    */
 /*                                                                    */
 /**********************************************************************/
-void sendM (int id_mis, void * missatge, int nbytes)
-{
-tmis mis;
-int r;
 
-if (nbytes > TAM_MAX_MIS )
-{ fprintf (stderr,"el missatge es massa gran\n");
-  exit(2);
-}
+typedef struct {
+    int f; /* fila */
+    int c; /* columna */
+} msg_data;
+char deb = 1;
 
- mis.tipus = UNIC;			/* estableix el tipus de missatge
-					   es considera un unic tipus */
- memcpy(mis.missatge,missatge,nbytes);	/*copia el missatge a l'estructura mis*/
+void sendM(int id_mis, void *missatge, int nbytes) {
+    tmis mis;
+    int r;
 
- r = msgsnd(id_mis,&mis,nbytes,(int)0); 	/* encua el missatge */
- 
-if (r!=0 )
-{ fprintf (stderr,"error al enviar el missatge\n");
-  exit(2);
-}
+    if (nbytes > TAM_MAX_MIS) {
+        fprintf(stderr, "el missatge es massa gran\n");
+        exit(2);
+    }
+
+    mis.tipus = UNIC; /* estableix el tipus de missatge
+                         es considera un unic tipus */
+    memcpy(mis.missatge, missatge,
+           nbytes); /*copia el missatge a l'estructura mis*/
+
+    r = msgsnd(id_mis, &mis, nbytes, (int)0); /* encua el missatge */
+
+    if (r != 0) {
+        fprintf(stderr, "error al enviar el missatge\n");
+        exit(2);
+    }
+
+    // DEBUG
+    if (deb) {
+        msg_data *data = (msg_data *)missatge;
+        fprintf(
+            stdin,
+            "Missatge enviat amb id_miss %d, missatge [%d, %d], nbytes %d\n",
+            id_mis, data->f, data->c, nbytes);
+    }
 }
 
 /**********************************************************************/
@@ -114,19 +129,23 @@ if (r!=0 )
 /*              missatge : adrec,a on es magatzemara el missatge      */
 /*                                                                    */
 /**********************************************************************/
-int receiveM (int id_mis, void * missatge)
-{
-tmis mis;
-int r;
+int receiveM(int id_mis, void *missatge) {
+    tmis mis;
+    int r;
 
- r = msgrcv(id_mis,&mis,TAM_MAX_MIS,(long)0,(int)0);  
-						/* desencua un missatge */
-if (r==-1 )
-{ fprintf (stderr,"error al rebre el missatge\n");
-  exit(2);
-}
+    r = msgrcv(id_mis, &mis, TAM_MAX_MIS, (long)0, (int)0);
+    /* desencua un missatge */
+    if (r == -1) {
+        fprintf(stderr, "error al rebre el missatge\n");
+        exit(2);
+    }
 
- memcpy(missatge,mis.missatge,r);	/*copia el missatge a l'estructura mis*/
+    memcpy(missatge, mis.missatge, r); /*copia el missatge a l'estructura mis*/
 
- return(r);
+    if (deb) {
+        msg_data *data = (msg_data *)missatge;
+        printf("Missatge REBUT amb id_miss %d, missatge [%d, %d],\n", id_mis,
+               data->f, data->c);
+    }
+    return (r);
 }
