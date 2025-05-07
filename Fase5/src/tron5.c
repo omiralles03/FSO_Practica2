@@ -37,6 +37,10 @@ void parse_args(int n_args, const char *ll_args[]) {
     }
 
     /* Mostra les tecles de joc */
+    printf("Enable DEBUG MODE? [y/N]: ");
+    char res = getchar();
+    DEBUG = (res == 'y' || res == 'Y') ? 1 : 0;
+
     printf("Joc del Tron\n\tTecles: \'%c\', \'%c\', \'%c\', \'%c\', RETURN-> "
            "sortir\n",
            TEC_AMUNT, TEC_AVALL, TEC_DRETA, TEC_ESQUER);
@@ -82,7 +86,7 @@ void fork_oponents(int id_retwin, int id_mem) {
 
     char s_idretwin[16], s_idmem[16], s_nfil[16], s_ncol[16], s_sdraw[16],
         s_slog[16], s_ssd[16], s_varia[16], s_maxret[16], s_minret[16],
-        s_logfile[16], s_index[16];
+        s_logfile[16], s_index[16], s_bustia[16];
 
     snprintf(s_idretwin, sizeof(s_idretwin), "%d", id_retwin);
     snprintf(s_idmem, sizeof(s_idmem), "%d", id_mem);
@@ -101,11 +105,11 @@ void fork_oponents(int id_retwin, int id_mem) {
         pid_opo[i] = fork();
         if (pid_opo[i] == 0) {
             snprintf(s_index, sizeof(s_index), "%d", i);
-            // srand(getpid()); /* inicialitza numeros aleatoris */
-            // mou_oponent(i);
+            snprintf(s_bustia, sizeof(s_bustia), "%d", bustia[i]);
+
             execlp("./oponent5", "oponent5", s_idretwin, s_idmem, s_nfil,
                    s_ncol, s_sdraw, s_slog, s_ssd, s_varia, s_maxret, s_minret,
-                   s_logfile, s_index, NULL);
+                   s_logfile, s_index, s_bustia, NULL);
             exit(0);
         }
     }
@@ -180,6 +184,12 @@ int main(int n_args, const char *ll_args[]) {
     sem_draw = ini_sem(1);
     sem_log = ini_sem(1);
     sem_sd = ini_sem(1);
+
+    /* inicialitzacio de la bustia */
+    for (int i = 0; i < num_opo; i++) {
+        bustia[i] = ini_mis();
+        // printf("bustia[%d] = %d\n", i, bustia[i]);
+    }
 
     /* actualitzador de pantalla */
     time_t timer_start = time(NULL);
