@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "memoria.h"
+#include "missatge.h"
 #include "semafor.h"
 #include "winsuport2.h"
 
@@ -23,15 +24,21 @@ typedef struct { /* per una entrada de la taula de posicio */
 } pos;
 
 typedef struct {
-    int len;
-    pos trail[MAX_TRAIL];
+    int len;              /* numero de posicions recorregudes */
+    pos trail[MAX_TRAIL]; /* posicions recorregudes */
 } trail_data;
 
 typedef struct {
     int num_opo;
     int fi1, fi2;
-    trail_data trails[MAX_OPO];
+    trail_data trails[MAX_OPO]; /* array que guarda per a cada oponent les
+                                   posicions recorregudes */
 } shared_data;
+
+typedef struct {
+    int f;
+    int c;
+} msg_data;
 
 /* variables globals */
 extern int n_fil, n_col; /* dimensions del camp de joc */
@@ -56,6 +63,10 @@ extern int max_ret, min_ret;
 
 extern shared_data *sd;
 extern int sem_draw, sem_log, sem_sd;
+
+extern int bustia[MAX_OPO];
+
+extern char DEBUG;
 
 void inicialitza_joc(void);
 void escriu_log(int id, int f, int c, int d, int fi);
